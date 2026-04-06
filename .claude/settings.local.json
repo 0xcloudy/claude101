@@ -12,7 +12,10 @@
       "Bash(printf \"Powerline arrow: \\\\ue0b0\\\\n\")",
       "Bash(printf \"Apple icon: \\\\uf179\\\\n\")",
       "Bash(printf \"Git branch: \\\\ue0a0\\\\n\")",
-      "Bash(python3:*)"
+      "Bash(python3:*)",
+      "Bash(npm search:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(claude /plugin marketplace add jarrodwatts/claude-hud)"
     ]
   }
 }
