@@ -38,7 +38,7 @@ brew install --cask ghostty
 theme = catppuccin-mocha
 
 # ── 字体（需提前安装 JetBrains Mono）────────────────────────
-font-family = JetBrainsMono Nerd Font Mono
+font-family = JetBrainsMono Nerd Font
 font-size = 14
 font-feature = calt
 font-feature = liga
@@ -225,86 +225,30 @@ eval "$(starship init zsh)"
 
 **2. 配置文件 `~/.config/starship.toml`（Powerline 风格 + Catppuccin 配色）：**
 
-```toml
-# Powerline style prompt (colored background segments)
+> 注意：配置中包含 Nerd Font 特殊字符（Powerline 箭头 U+E0B0、Apple 图标 U+F179、git 分支 U+E0A0、Node U+E718 等），
+> 需要用支持 Unicode 的编辑器编辑，或通过 Python 写入 Unicode 转义。
 
-format = """
-[](fg:#a6da95)\
-[ $os ](bg:#a6da95 fg:#1e1e2e bold)\
-[](fg:#a6da95 bg:#7dc4e4)\
-[ $directory](bg:#7dc4e4 fg:#1e1e2e bold)\
-[](fg:#7dc4e4 bg:#c6a0f6)\
-[$git_branch$git_status](bg:#c6a0f6 fg:#1e1e2e bold)\
-[](fg:#c6a0f6)\
-$nodejs$python$rust$golang\
-$cmd_duration\
-$line_break\
-$character"""
+关键配置说明：
 
-[os]
-disabled = false
-format = "$symbol"
+- `format`：左侧 Powerline 色块（绿色用户名 → 蓝色目录 → 紫色 git 分支状态）
+- `right_format`：右侧显示语言版本号（Node.js / Python / Rust / Go）
+- `[username]`：`show_always = true` 始终显示用户名
+- `[git_branch]`：显示分支图标 + 分支名
+- `[git_status]`：修改(!)、未跟踪(?)、暂存(+) 等状态标记，仅有变更时显示
+- `[nodejs]` 等语言模块：仅在对应项目目录下自动显示版本号
 
-[os.symbols]
-Macos = ""
-
-[directory]
-format = "[$path ]($style)"
-style = "bg:#7dc4e4 fg:#1e1e2e bold"
-truncation_length = 3
-truncate_to_repo = false
-
-[git_branch]
-format = "[ $symbol$branch ]($style)"
-symbol = " "
-style = "bg:#c6a0f6 fg:#1e1e2e bold"
-
-[git_status]
-format = "[$all_status$ahead_behind]($style)"
-style = "bg:#c6a0f6 fg:#1e1e2e bold"
-conflicted = "!"
-ahead = "↑${count}"
-behind = "↓${count}"
-modified = "!"
-untracked = "?"
-staged = "+"
-renamed = "»"
-deleted = "✘"
-
-[character]
-success_symbol = "[❯](bold #a6e3a1)"
-error_symbol = "[❯](bold #f38ba8)"
-
-[nodejs]
-format = "[ $symbol($version) ](fg:#a6e3a1)"
-symbol = " "
-
-[python]
-format = "[ $symbol($version) ](fg:#f9e2af)"
-symbol = " "
-
-[rust]
-format = "[ $symbol($version) ](fg:#f38ba8)"
-symbol = " "
-
-[golang]
-format = "[ $symbol($version) ](fg:#89dceb)"
-symbol = " "
-
-[cmd_duration]
-min_time = 2000
-style = "#f9e2af"
-format = "[ $duration ]($style)"
-```
+**字体要求**：必须安装 Nerd Font（`brew install --cask font-jetbrains-mono-nerd-font`），
+Ghostty 中配置 `font-family = JetBrainsMono Nerd Font`。
 
 ### 提示符效果
 
 ```
-  ~/projects/claude101   main !?
+ lightenwang  ~/projects/claude101   main !?↑3          v22.22.2
 ❯
 ```
 
-绿色块（ macOS 图标）→ 蓝色块（目录路径）→ 紫色块（git 分支 + 状态），Powerline 箭头衔接。
+- 左侧：绿色块（Apple + 用户名）→ 蓝色块（目录）→ 紫色块（git 分支 + 状态），Powerline 箭头衔接
+- 右侧：语言版本号（仅在对应项目目录下显示）
 
 ### 常用操作
 
