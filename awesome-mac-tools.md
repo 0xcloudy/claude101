@@ -223,63 +223,88 @@ ZSH_THEME=""
 eval "$(starship init zsh)"
 ```
 
-**2. 配置文件 `~/.config/starship.toml`（Catppuccin 配色）：**
+**2. 配置文件 `~/.config/starship.toml`（Powerline 风格 + Catppuccin 配色）：**
 
 ```toml
+# Powerline style prompt (colored background segments)
+
 format = """
-$directory$git_branch$git_status$nodejs$python$rust$golang
+[](fg:#a6da95)\
+[ $os ](bg:#a6da95 fg:#1e1e2e bold)\
+[](fg:#a6da95 bg:#7dc4e4)\
+[ $directory](bg:#7dc4e4 fg:#1e1e2e bold)\
+[](fg:#7dc4e4 bg:#c6a0f6)\
+[$git_branch$git_status](bg:#c6a0f6 fg:#1e1e2e bold)\
+[](fg:#c6a0f6)\
+$nodejs$python$rust$golang\
+$cmd_duration\
+$line_break\
 $character"""
 
+[os]
+disabled = false
+format = "$symbol"
+
+[os.symbols]
+Macos = ""
+
 [directory]
-style = "bold #89b4fa"
+format = "[$path ]($style)"
+style = "bg:#7dc4e4 fg:#1e1e2e bold"
 truncation_length = 3
-truncate_to_repo = true
+truncate_to_repo = false
 
 [git_branch]
+format = "[ $symbol$branch ]($style)"
 symbol = " "
-style = "bold #a6e3a1"
+style = "bg:#c6a0f6 fg:#1e1e2e bold"
 
 [git_status]
-style = "bold #f38ba8"
-conflicted = "! "
-ahead = "up${count} "
-behind = "dn${count} "
-modified = "* "
-untracked = "? "
-staged = "v "
+format = "[$all_status$ahead_behind]($style)"
+style = "bg:#c6a0f6 fg:#1e1e2e bold"
+conflicted = "!"
+ahead = "↑${count}"
+behind = "↓${count}"
+modified = "!"
+untracked = "?"
+staged = "+"
+renamed = "»"
+deleted = "✘"
 
 [character]
-success_symbol = "[>](bold #a6e3a1)"
-error_symbol = "[>](bold #f38ba8)"
+success_symbol = "[❯](bold #a6e3a1)"
+error_symbol = "[❯](bold #f38ba8)"
 
 [nodejs]
+format = "[ $symbol($version) ](fg:#a6e3a1)"
 symbol = " "
-style = "#a6e3a1"
 
 [python]
+format = "[ $symbol($version) ](fg:#f9e2af)"
 symbol = " "
-style = "#f9e2af"
 
 [rust]
+format = "[ $symbol($version) ](fg:#f38ba8)"
 symbol = " "
-style = "#f38ba8"
 
 [golang]
+format = "[ $symbol($version) ](fg:#89dceb)"
 symbol = " "
-style = "#89dceb"
 
 [cmd_duration]
 min_time = 2000
 style = "#f9e2af"
-format = "took [$duration]($style) "
+format = "[ $duration ]($style)"
 ```
 
 ### 提示符效果
 
 ```
-~/projects/claude101  main * ? node v20.11.0
->
+  ~/projects/claude101   main !?
+❯
 ```
+
+绿色块（ macOS 图标）→ 蓝色块（目录路径）→ 紫色块（git 分支 + 状态），Powerline 箭头衔接。
 
 ### 常用操作
 
