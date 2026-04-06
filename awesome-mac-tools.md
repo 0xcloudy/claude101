@@ -38,7 +38,7 @@ brew install --cask ghostty
 theme = catppuccin-mocha
 
 # ── 字体（需提前安装 JetBrains Mono）────────────────────────
-font-family = JetBrainsMono NF
+font-family = JetBrainsMono Nerd Font Mono
 font-size = 14
 font-feature = calt
 font-feature = liga
