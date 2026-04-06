@@ -2,7 +2,7 @@
 
 macOS 终端工作流安装与配置记录。
 
-工具栈：**Ghostty** (终端) + **Starship** (提示符) + **fzf** (模糊搜索) + **zoxide** (智能跳转) + **Yazi** (文件管理器) + **fd** (fzf 搜索后端)
+工具栈：**Ghostty** (终端) + **Starship** (提示符) + **fzf** (模糊搜索) + **zoxide** (智能跳转) + **Yazi** (文件管理器) + **fd** (fzf 搜索后端) + **Claude HUD** (Claude Code 状态面板)
 
 统一视觉主题：**Catppuccin Mocha**
 
@@ -374,6 +374,48 @@ brew uninstall yazi   # 卸载
 
 ---
 
+## Claude HUD
+
+> Claude Code 插件，在终端状态栏实时显示会话指标（上下文用量、工具调用、Agent 状态、Todo 进度、git 状态等）
+
+- 安装日期：2026-04-06
+- GitHub：https://github.com/jarrodwatts/claude-hud
+
+### 安装命令
+
+在 Claude Code 中依次执行：
+
+```
+/plugin marketplace add jarrodwatts/claude-hud
+/plugin install claude-hud
+/reload-plugins
+/claude-hud:setup
+```
+
+安装完成后重启 Claude Code 生效。
+
+### 自定义配置
+
+```
+/claude-hud:configure
+```
+
+可配置项：
+- **布局**：expanded（多行）或 compact（单行）
+- **显示元素**：工具调用、Agent、Todo、git 状态、费用、时长等
+- **语言**：English / 中文
+- **颜色**：上下文用量、警告、临界状态的颜色
+
+### 常用操作
+
+```
+/claude-hud:setup        # 初始化配置
+/claude-hud:configure    # 自定义显示
+/reload-plugins          # 重载插件
+```
+
+---
+
 ## ~/.zshrc 完整改动摘要
 
 本次对 `~/.zshrc` 的修改：
@@ -423,3 +465,4 @@ eval "$(starship init zsh)"
 - fd：https://github.com/sharkdp/fd
 - JetBrains Mono 字体：https://www.jetbrains.com/lp/mono/
 - Catppuccin 主题：https://github.com/catppuccin
+- Claude HUD：https://github.com/jarrodwatts/claude-hud
