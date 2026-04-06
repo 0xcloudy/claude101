@@ -8,7 +8,11 @@
       "Bash(fc-list)",
       "Bash(python3 -c ':*)",
       "Bash(mdls -name kMDItemFonts ~/Library/Fonts/JetBrainsMonoNerdFont-Regular.ttf)",
-      "Bash(/Applications/Ghostty.app/Contents/MacOS/ghostty +list-fonts)"
+      "Bash(/Applications/Ghostty.app/Contents/MacOS/ghostty +list-fonts)",
+      "Bash(printf \"Powerline arrow: \\\\ue0b0\\\\n\")",
+      "Bash(printf \"Apple icon: \\\\uf179\\\\n\")",
+      "Bash(printf \"Git branch: \\\\ue0a0\\\\n\")",
+      "Bash(python3:*)"
     ]
   }
 }
