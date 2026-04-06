@@ -225,7 +225,7 @@ eval "$(starship init zsh)"
 
 **2. 配置文件 `~/.config/starship.toml`（Powerline 风格 + Catppuccin 配色）：**
 
-> 注意：配置中包含 Nerd Font 特殊字符（Powerline 箭头 U+E0B0、Apple 图标 U+F179、git 分支 U+E0A0、Node U+E718 等），
+> 注意：配置中包含 Nerd Font 特殊字符（Powerline 箭头 U+E0B0、Apple 图标 U+F179、git 分支 U+E725、Node U+E718 等），
 > 需要用支持 Unicode 的编辑器编辑，或通过 Python 写入 Unicode 转义。
 
 关键配置说明：
@@ -233,7 +233,7 @@ eval "$(starship init zsh)"
 - `format`：左侧 Powerline 色块（绿色用户名 → 蓝色目录 → 紫色 git 分支状态）
 - `right_format`：右侧显示语言版本号（Node.js / Python / Rust / Go）
 - `[username]`：`show_always = true` 始终显示用户名
-- `[git_branch]`：显示分支图标 + 分支名
+- `[git_branch]`：显示分支图标（U+E725 nf-dev-git_branch）+ 分支名
 - `[git_status]`：修改(!)、未跟踪(?)、暂存(+) 等状态标记，仅有变更时显示
 - `[nodejs]` 等语言模块：仅在对应项目目录下自动显示版本号
 
